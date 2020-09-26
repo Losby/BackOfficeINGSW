@@ -41,12 +41,12 @@
                                   <Component id="IndirizzoField" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
                                   <Component id="PrezzoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="187" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="234" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="PrezzoBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="EliminaButton" min="-2" pref="153" max="-2" attributes="0"/>
+                              <Component id="EliminaButton" min="-2" pref="167" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -56,22 +56,20 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="NomeStrutturaLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="1" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="NomeStrutturaLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="IndirizzoLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="IndirizzoField" min="-2" pref="31" max="-2" attributes="0"/>
@@ -86,7 +84,7 @@
                       <Component id="ModificaButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="150" max="32767" attributes="0"/>
+              <EmptySpace pref="145" max="32767" attributes="0"/>
               <Component id="BackButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -96,6 +94,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="BackButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Corbel" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Indietro"/>
       </Properties>
       <Events>
@@ -135,7 +136,7 @@
     <Component class="javax.swing.JLabel" name="NomeStrutturaLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="36" style="1"/>
+          <Font name="Corbel" size="36" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nome Struttura"/>
@@ -143,6 +144,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="IndirizzoLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Corbel" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Indirizzo"/>
       </Properties>
     </Component>
@@ -155,11 +159,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="PrezzoLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Corbel" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Prezzo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="PrezzoBox">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
             <StringItem index="0" value="&#x20ac;"/>
@@ -177,6 +187,9 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Corbel" size="18" style="0"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
@@ -188,6 +201,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="ModificaButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Corbel" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Modifica"/>
       </Properties>
     </Component>

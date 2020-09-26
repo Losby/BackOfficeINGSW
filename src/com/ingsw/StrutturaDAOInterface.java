@@ -10,7 +10,7 @@ package com.ingsw;
  */
 public interface StrutturaDAOInterface {
     
-    public LinkedList<Struttura> getAllStrutture();
+  //  public LinkedList<Struttura> getAllStrutture();
     public int updateStruttura(int ChiavePrimaria, Struttura PostModifica);
     
 }

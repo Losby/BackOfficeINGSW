@@ -44,6 +44,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jButton1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jButton1.setText("Logout");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +58,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.5;
         getContentPane().add(jButton1, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Console", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Benvenuto! Cosa vuoi fare oggi?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -68,6 +69,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jLabel1, gridBagConstraints);
 
+        jButton2.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
         jButton2.setText("Gestione delle Strutture");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +87,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         getContentPane().add(jButton2, gridBagConstraints);
 
+        jButton3.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
         jButton3.setText("Gestione delle Recensioni");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;

@@ -43,6 +43,7 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jButton1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jButton1.setText("Torna al Menu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +58,7 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         getContentPane().add(jButton1, gridBagConstraints);
 
+        jButton2.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jButton2.setText("Logout");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +73,7 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         getContentPane().add(jButton2, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Console", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cosa vuoi fare?");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -82,7 +84,7 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.5;
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
         jButton3.setText("Gestisci una struttura registrata");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +101,7 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 14, 0);
         getContentPane().add(jButton3, gridBagConstraints);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
         jButton4.setText("Inserisci una nuova struttura");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

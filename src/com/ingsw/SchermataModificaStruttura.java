@@ -46,6 +46,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        BackButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         BackButton.setText("Indietro");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,19 +73,23 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
                 .addGap(49, 49, 49))
         );
 
-        NomeStrutturaLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        NomeStrutturaLabel.setFont(new java.awt.Font("Corbel", 1, 36)); // NOI18N
         NomeStrutturaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NomeStrutturaLabel.setText("Nome Struttura");
 
+        IndirizzoLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         IndirizzoLabel.setText("Indirizzo");
 
         IndirizzoField.setForeground(new java.awt.Color(204, 204, 204));
 
+        PrezzoLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         PrezzoLabel.setText("Prezzo");
 
+        PrezzoBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PrezzoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "€", "€€", "€€€" }));
 
         EliminaButton.setBackground(new java.awt.Color(255, 255, 255));
+        EliminaButton.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
         EliminaButton.setForeground(new java.awt.Color(255, 0, 0));
         EliminaButton.setText("Elimina struttura");
         EliminaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +98,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
             }
         });
 
+        ModificaButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         ModificaButton.setText("Modifica");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,28 +121,27 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
                                     .addComponent(ModificaButton)
                                     .addComponent(IndirizzoField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(PrezzoLabel))
-                                .addGap(0, 187, Short.MAX_VALUE))
+                                .addGap(0, 234, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(PrezzoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EliminaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(EliminaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(NomeStrutturaLabel)
-                .addGap(208, 208, 208))
+                .addGap(228, 228, 228))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(21, 21, 21)
                 .addComponent(NomeStrutturaLabel)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(24, 24, 24)
                         .addComponent(IndirizzoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IndirizzoField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +153,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
                             .addComponent(EliminaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ModificaButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(BackButton)
                 .addContainerGap())
         );

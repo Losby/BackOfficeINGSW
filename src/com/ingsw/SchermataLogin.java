@@ -48,6 +48,7 @@ public class SchermataLogin extends javax.swing.JFrame {
         setTitle("CV19 Back Office - Login");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        IDLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         IDLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IDLabel.setText("ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -58,6 +59,7 @@ public class SchermataLogin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 0);
         getContentPane().add(IDLabel, gridBagConstraints);
 
+        PasswordLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         PasswordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PasswordLabel.setText("Password:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -68,6 +70,7 @@ public class SchermataLogin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(4, 0, 4, 0);
         getContentPane().add(PasswordLabel, gridBagConstraints);
 
+        LoginButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
