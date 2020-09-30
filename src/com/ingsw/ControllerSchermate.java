@@ -17,6 +17,7 @@ public class ControllerSchermate {
     private final SchermataModificaStruttura ModificaStruttura;
     private final SchermataInserimentoStruttura InserisciStruttura;
     private final SchermataInserisciFoto InserisciFoto;
+    private final SchermataConfermaInserimentoStruttura ConfermaOperazioneInserimento;
     
     public ControllerSchermate() {
         super();
@@ -27,6 +28,7 @@ public class ControllerSchermate {
         ModificaStruttura = new SchermataModificaStruttura(this);
         InserisciStruttura = new SchermataInserimentoStruttura(this);
         InserisciFoto = new SchermataInserisciFoto(this);
+        ConfermaOperazioneInserimento = new SchermataConfermaInserimentoStruttura(this);
     }
     
     public static void main(String args[]) {
@@ -70,5 +72,9 @@ public class ControllerSchermate {
     
     public void showInserisciFoto() {
         InserisciFoto.setVisible(true);
+    }
+    
+    public void showConfermaInserimento() {
+        ConfermaOperazioneInserimento.setVisible(true);
     }
 }

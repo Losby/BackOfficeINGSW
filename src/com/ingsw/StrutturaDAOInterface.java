@@ -12,5 +12,7 @@ public interface StrutturaDAOInterface {
     
   //  public LinkedList<Struttura> getAllStrutture();
     public int updateStruttura(int ChiavePrimaria, Struttura PostModifica);
+    public void creaStruttura(Struttura StrutturaDaCaricare);
+    public void cancellaStruttura(int ChiavePrimaria);
     
 }

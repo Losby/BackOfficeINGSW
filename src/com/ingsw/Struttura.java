@@ -13,7 +13,17 @@ public class Struttura {
     private String NomeStruttura;
     private String Indirizzo;
     private String Prezzo;
+    private String Categoria;
+    private int IDStruttura;
     
+    public Struttura() {}
+    
+    public Struttura(String Nome, String Indirizzo, String Prezzo, String Categoria) {
+        this.NomeStruttura = Nome;
+        this.Indirizzo = Indirizzo;
+        this.Prezzo = Prezzo;
+        this.Categoria = Categoria;
+    }
     
     public String getNomeStruttura() {
         return NomeStruttura;
@@ -24,5 +34,13 @@ public class Struttura {
     
     public String getIndirizzo() {
         return Indirizzo;
+    }
+    
+    public void setIDStruttura(int IDStruttura) {
+        this.IDStruttura = IDStruttura;
+    }
+    
+    public int getIDStruttura() {
+        return IDStruttura;
     }
 }

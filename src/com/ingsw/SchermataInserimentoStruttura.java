@@ -5,6 +5,8 @@
  */
 package com.ingsw;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Marco
@@ -55,6 +57,8 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        CittaLabel = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -99,7 +103,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         CategoriaLabel.setText("Categoria");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.3;
@@ -111,7 +115,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         PrezzoLabel.setText("Range di prezzo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.3;
@@ -127,7 +131,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 0.2;
@@ -135,6 +139,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
 
         AvantiButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         AvantiButton.setText("Avanti");
+        AvantiButton.setEnabled(false);
         AvantiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AvantiButtonActionPerformed(evt);
@@ -142,13 +147,23 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 0.2;
         getContentPane().add(AvantiButton, gridBagConstraints);
 
         NomeStrutturaField.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        NomeStrutturaField.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                IndirizzoFieldMouseMoved(evt);
+            }
+        });
+        NomeStrutturaField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IndirizzoFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -158,6 +173,16 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         getContentPane().add(NomeStrutturaField, gridBagConstraints);
 
         IndirizzoField.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        IndirizzoField.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                IndirizzoFieldMouseMoved(evt);
+            }
+        });
+        IndirizzoField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IndirizzoFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
@@ -170,7 +195,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         CategoriaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ristorante", "Hotel", "Parco", "Bar", "Teatro", "Museo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weighty = 0.3;
         getContentPane().add(CategoriaBox, gridBagConstraints);
@@ -178,7 +203,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         PrezzoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "€", "€€", "€€€" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weighty = 0.3;
         getContentPane().add(PrezzoBox, gridBagConstraints);
@@ -205,24 +230,65 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         getContentPane().add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.weightx = 0.2;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(filler4, gridBagConstraints);
 
+        CittaLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CittaLabel.setText("Città");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.3;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        getContentPane().add(CittaLabel, gridBagConstraints);
+
+        jTextField1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.3;
+        getContentPane().add(jTextField1, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AvantiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvantiButtonActionPerformed
-        this.setVisible(false);
-        controller.showInserisciFoto();
+        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "I campi Indirizzo e Nome Struttura non possono essere vuoti!");
+        }
+        else {
+            this.setVisible(false);
+            controller.showInserisciFoto();
+        }
     }//GEN-LAST:event_AvantiButtonActionPerformed
 
     private void IndietroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IndietroButtonActionPerformed
         this.setVisible(false);
         controller.showGestioneStrutture();
     }//GEN-LAST:event_IndietroButtonActionPerformed
+
+    private void IndirizzoFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IndirizzoFieldKeyPressed
+        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("")) {
+            AvantiButton.setEnabled(false);
+        } else {
+            AvantiButton.setEnabled(true);
+        }
+    }//GEN-LAST:event_IndirizzoFieldKeyPressed
+
+    private void IndirizzoFieldMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IndirizzoFieldMouseMoved
+        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("")) {
+            AvantiButton.setEnabled(false);
+        } else {
+            AvantiButton.setEnabled(true);
+        }
+    }//GEN-LAST:event_IndirizzoFieldMouseMoved
 
     /**
      * @param args the command line arguments
@@ -263,6 +329,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
     private javax.swing.JButton AvantiButton;
     private javax.swing.JComboBox<String> CategoriaBox;
     private javax.swing.JLabel CategoriaLabel;
+    private javax.swing.JLabel CittaLabel;
     private javax.swing.JButton IndietroButton;
     private javax.swing.JTextField IndirizzoField;
     private javax.swing.JLabel IndirizzoLabel;
@@ -275,5 +342,6 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -123,6 +123,11 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
 
         CompletaProceduraButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         CompletaProceduraButton.setText("Completa procedura");
+        CompletaProceduraButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompletaProceduraButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 5;
@@ -149,6 +154,11 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         this.setVisible(false);
         controller.showInserisciStruttura();
     }//GEN-LAST:event_IndietroButtonFotoActionPerformed
+
+    private void CompletaProceduraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompletaProceduraButtonActionPerformed
+        this.setVisible(false);
+        controller.showConfermaInserimento();
+    }//GEN-LAST:event_CompletaProceduraButtonActionPerformed
 
     /**
      * @param args the command line arguments

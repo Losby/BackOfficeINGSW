@@ -60,13 +60,13 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         gridBagConstraints.weightx = 0.1;
         getContentPane().add(BackButton, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ecco le strutture registrate sulla nostra piattaforma:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 2.0;
         getContentPane().add(jLabel1, gridBagConstraints);
