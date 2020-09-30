@@ -34,44 +34,46 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        MenuButton = new javax.swing.JButton();
+        LogoutButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        GestisciStruttureButton = new javax.swing.JButton();
+        InserisciStrutturaButton = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jButton1.setText("Torna al Menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        MenuButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        MenuButton.setText("Torna al Menu");
+        MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                MenuButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 0.4;
         gridBagConstraints.weighty = 0.5;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(MenuButton, gridBagConstraints);
 
-        jButton2.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jButton2.setText("Logout");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        LogoutButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        LogoutButton.setText("Logout");
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                LogoutButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHEAST;
         gridBagConstraints.weightx = 0.3;
         gridBagConstraints.weighty = 0.5;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        getContentPane().add(jButton2, gridBagConstraints);
+        getContentPane().add(LogoutButton, gridBagConstraints);
 
         jLabel1.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -84,61 +86,72 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.5;
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        jButton3.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
-        jButton3.setText("Gestisci una struttura registrata");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        GestisciStruttureButton.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        GestisciStruttureButton.setText("Gestisci una struttura registrata");
+        GestisciStruttureButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                GestisciStruttureButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 14, 0);
-        getContentPane().add(jButton3, gridBagConstraints);
+        getContentPane().add(GestisciStruttureButton, gridBagConstraints);
 
-        jButton4.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
-        jButton4.setText("Inserisci una nuova struttura");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        InserisciStrutturaButton.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        InserisciStrutturaButton.setText("Inserisci una nuova struttura");
+        InserisciStrutturaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                InserisciStrutturaButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 14, 0);
-        getContentPane().add(jButton4, gridBagConstraints);
+        getContentPane().add(InserisciStrutturaButton, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(filler1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(filler2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void MenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuButtonActionPerformed
         this.setVisible(false);
         controller.showMenu();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_MenuButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void GestisciStruttureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestisciStruttureButtonActionPerformed
         this.setVisible(false);
-        controller.showStruttureRegistrate();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        controller.showStruttureRegistrate("Strutture");
+    }//GEN-LAST:event_GestisciStruttureButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void InserisciStrutturaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InserisciStrutturaButtonActionPerformed
+        this.setVisible(false);
+        controller.showInserisciStruttura();
+    }//GEN-LAST:event_InserisciStrutturaButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
         this.setVisible(false);
         controller.logout();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_LogoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,10 +189,12 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton GestisciStruttureButton;
+    private javax.swing.JButton InserisciStrutturaButton;
+    private javax.swing.JButton LogoutButton;
+    private javax.swing.JButton MenuButton;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

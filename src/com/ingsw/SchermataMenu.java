@@ -34,29 +34,30 @@ public class SchermataMenu extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jButton1 = new javax.swing.JButton();
+        LogoutButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        StruttureButton = new javax.swing.JButton();
+        RecensioniButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 3), new java.awt.Dimension(0, 3), new java.awt.Dimension(32767, 3));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 3), new java.awt.Dimension(0, 3), new java.awt.Dimension(32767, 3));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LogoutButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        LogoutButton.setText("Logout");
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LogoutButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 0.5;
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(LogoutButton, gridBagConstraints);
 
         jLabel1.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -69,11 +70,11 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        jButton2.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
-        jButton2.setText("Gestione delle Strutture");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        StruttureButton.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        StruttureButton.setText("Gestione delle Strutture");
+        StruttureButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                StruttureButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -82,49 +83,60 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 20;
-        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
-        getContentPane().add(jButton2, gridBagConstraints);
+        getContentPane().add(StruttureButton, gridBagConstraints);
 
-        jButton3.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
-        jButton3.setText("Gestione delle Recensioni");
+        RecensioniButton.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        RecensioniButton.setText("Gestione delle Recensioni");
+        RecensioniButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecensioniButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 20;
-        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
-        getContentPane().add(jButton3, gridBagConstraints);
+        getContentPane().add(RecensioniButton, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 20);
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weighty = 0.5;
         getContentPane().add(filler1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 4;
-        gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
+        gridBagConstraints.weightx = 0.8;
+        gridBagConstraints.weighty = 0.5;
         getContentPane().add(filler2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void StruttureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StruttureButtonActionPerformed
         this.setVisible(false);
         controller.showGestioneStrutture();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_StruttureButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
         this.setVisible(false);
         controller.logout();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LogoutButtonActionPerformed
+
+    private void RecensioniButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecensioniButtonActionPerformed
+        this.setVisible(false);
+        controller.showStruttureRegistrate("Recensioni");
+    }//GEN-LAST:event_RecensioniButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +174,11 @@ public class SchermataMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LogoutButton;
+    private javax.swing.JButton RecensioniButton;
+    private javax.swing.JButton StruttureButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

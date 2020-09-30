@@ -12,6 +12,7 @@ package com.ingsw;
 public class SchermataStruttureRegistrate extends javax.swing.JFrame {
 
     private ControllerSchermate controller;
+    private String Operazione;
     /**
      * Creates new form SchermataStruttureRegistrate
      */
@@ -24,6 +25,9 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    public void setOperazione(String Operazione) {
+        this.Operazione = Operazione;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,7 +108,12 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         this.setVisible(false);
-        controller.showGestioneStrutture();
+        if(Operazione == "Strutture"){
+            controller.showGestioneStrutture();
+        }
+        else if (Operazione == "Recensioni") {
+            controller.showMenu();
+        }
     }//GEN-LAST:event_BackButtonActionPerformed
 
     /**

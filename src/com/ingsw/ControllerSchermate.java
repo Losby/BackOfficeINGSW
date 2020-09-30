@@ -15,6 +15,8 @@ public class ControllerSchermate {
     private final SchermataGestioneStrutture GestioneStrutture;
     private final SchermataStruttureRegistrate ModificaStruttureRegistrate;
     private final SchermataModificaStruttura ModificaStruttura;
+    private final SchermataInserimentoStruttura InserisciStruttura;
+    private final SchermataInserisciFoto InserisciFoto;
     
     public ControllerSchermate() {
         super();
@@ -23,6 +25,8 @@ public class ControllerSchermate {
         GestioneStrutture = new SchermataGestioneStrutture(this);
         ModificaStruttureRegistrate = new SchermataStruttureRegistrate(this);
         ModificaStruttura = new SchermataModificaStruttura(this);
+        InserisciStruttura = new SchermataInserimentoStruttura(this);
+        InserisciFoto = new SchermataInserisciFoto(this);
     }
     
     public static void main(String args[]) {
@@ -43,7 +47,8 @@ public class ControllerSchermate {
         Menu.setVisible(true);
     }
     
-    public void showStruttureRegistrate() {
+    public void showStruttureRegistrate(String Operazione) {
+        ModificaStruttureRegistrate.setOperazione(Operazione);
         ModificaStruttureRegistrate.setVisible(true);
     }
     
@@ -59,5 +64,11 @@ public class ControllerSchermate {
         ModificaStruttura.setVisible(true);
     }
     
+    public void showInserisciStruttura() {
+        InserisciStruttura.setVisible(true);
+    }
     
+    public void showInserisciFoto() {
+        InserisciFoto.setVisible(true);
+    }
 }
