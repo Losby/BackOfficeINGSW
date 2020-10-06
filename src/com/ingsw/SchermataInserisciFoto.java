@@ -11,17 +11,20 @@ package com.ingsw;
  */
 public class SchermataInserisciFoto extends javax.swing.JFrame {
     
+    private SchermataSelezionaFoto FotoChooser;
     private ControllerSchermate controller;
     /**
      * Creates new form SchermataInserisciFoto
      */
     public SchermataInserisciFoto() {
         initComponents();
+        FotoChooser = new SchermataSelezionaFoto(this);
     }
     public SchermataInserisciFoto(ControllerSchermate controller) {
         initComponents();
         this.controller = controller;
         this.setLocationRelativeTo(null);
+        FotoChooser = new SchermataSelezionaFoto(this);
     }
 
     /**
@@ -53,6 +56,7 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.2;
         gridBagConstraints.weighty = 0.3;
         getContentPane().add(IntestazioneLabelFoto, gridBagConstraints);
@@ -100,6 +104,11 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
 
         CaricaFotoButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         CaricaFotoButton.setText("Carica");
+        CaricaFotoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CaricaFotoButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -117,7 +126,7 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weightx = 0.3;
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(IndietroButtonFoto, gridBagConstraints);
 
@@ -144,7 +153,7 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 6;
-        gridBagConstraints.weightx = 0.7;
+        gridBagConstraints.weightx = 0.9;
         getContentPane().add(filler6, gridBagConstraints);
 
         pack();
@@ -159,6 +168,11 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         this.setVisible(false);
         controller.showConfermaInserimento();
     }//GEN-LAST:event_CompletaProceduraButtonActionPerformed
+
+    private void CaricaFotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaricaFotoButtonActionPerformed
+        this.setVisible(false);
+        FotoChooser.setVisible(true);
+    }//GEN-LAST:event_CaricaFotoButtonActionPerformed
 
     /**
      * @param args the command line arguments
