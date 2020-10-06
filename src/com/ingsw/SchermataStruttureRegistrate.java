@@ -5,6 +5,13 @@
  */
 package com.ingsw;
 
+import static com.ingsw.TextPrompt.Show.FOCUS_LOST;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.ListModel;
+
 /**
  *
  * @author Marco
@@ -13,6 +20,9 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
 
     private ControllerSchermate controller;
     private String Operazione;
+    private DefaultListModel ModelloListaCompleto;
+    private TextPrompt PromptRicerca;
+    private ArrayList<Struttura> ListaStrutture;
     /**
      * Creates new form SchermataStruttureRegistrate
      */
@@ -23,10 +33,66 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         initComponents();
         this.controller = controller;
         this.setLocationRelativeTo(null);
+        PromptRicerca = new TextPrompt("Cerca struttura...", CercaField);
+        PromptRicerca.setShowPromptOnce(true);
+        PromptRicerca.setShow(FOCUS_LOST);
     }
 
     public void setOperazione(String Operazione) {
         this.Operazione = Operazione;
+    }
+    
+    public void elencaStrutture(ArrayList<Struttura> ListaStrutture) {
+        this.ListaStrutture = ListaStrutture;
+        DefaultListModel listModel = new DefaultListModel();
+        Iterator<Struttura> it = ListaStrutture.iterator();
+        Struttura temp;
+        
+        while(it.hasNext()) {
+            temp = it.next();
+            listModel.addElement(temp.toString());
+            //listModel.addElement(temp);
+        }
+        
+        JListStrutture.setModel(listModel);
+        ModelloListaCompleto = listModel;
+        //jScrollPane1.add(JListStrutture);
+        //JListStrutture.setVisible(true);
+        
+    }
+    
+    public void filterModel(String filter) {
+        
+        if(!filter.equals("")){
+            DefaultListModel ModelloFiltrato = new DefaultListModel();
+            for (int i = 0; i < ModelloListaCompleto.getSize(); i++) {
+                String s = ModelloListaCompleto.getElementAt(i).toString();
+                if ( s.matches("(?i:.*" + filter + ".*)") ) {
+                    ModelloFiltrato.addElement(ModelloListaCompleto.getElementAt(i));
+                }       
+            }
+            JListStrutture.setModel(ModelloFiltrato);
+        } else {
+            JListStrutture.setModel(ModelloListaCompleto);
+        }
+    }
+
+    private Struttura trovaStruttura(String Descrizione) {
+        Iterator<Struttura> it = ListaStrutture.iterator();
+        Struttura temp;
+        
+        while(it.hasNext()) {
+            temp = it.next();
+            if (temp.toString().equals(Descrizione)) {
+                return temp;
+            }
+        }
+        return null;
+    }
+    
+    public void filtraLista() {
+        String filter = CercaField.getText();
+        filterModel(filter);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +107,8 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         BackButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextField1 = new javax.swing.JTextField();
+        JListStrutture = new javax.swing.JList<>();
+        CercaField = new javax.swing.JTextField();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 32767));
         SearchButton = new javax.swing.JButton();
 
@@ -70,6 +137,15 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 2.0;
         getContentPane().add(jLabel1, gridBagConstraints);
+
+        JListStrutture.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        JListStrutture.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JListStruttureMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(JListStrutture);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -79,15 +155,19 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Cerca...");
+        CercaField.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CercaField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CercaFieldKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        getContentPane().add(jTextField1, gridBagConstraints);
+        getContentPane().add(CercaField, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -97,6 +177,11 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
 
         SearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ingsw/immagini/search.png"))); // NOI18N
         SearchButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        SearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -115,6 +200,25 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
             controller.showMenu();
         }
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void JListStruttureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JListStruttureMouseClicked
+        this.setVisible(false);
+        if(Operazione == "Strutture"){
+            controller.showModificaStruttura(trovaStruttura(JListStrutture.getSelectedValue()));
+        } else if (Operazione == "Recensioni") {
+            controller.showGestioneRecensioni(trovaStruttura(JListStrutture.getSelectedValue()));
+        } else {
+            controller.logout();
+        }
+    }//GEN-LAST:event_JListStruttureMouseClicked
+
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+        filtraLista();
+    }//GEN-LAST:event_SearchButtonActionPerformed
+
+    private void CercaFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CercaFieldKeyTyped
+        filtraLista();
+    }//GEN-LAST:event_CercaFieldKeyTyped
 
     /**
      * @param args the command line arguments
@@ -153,10 +257,11 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JTextField CercaField;
+    private javax.swing.JList<String> JListStrutture;
     private javax.swing.JButton SearchButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
