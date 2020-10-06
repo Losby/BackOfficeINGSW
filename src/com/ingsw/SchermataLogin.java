@@ -11,6 +11,9 @@ package com.ingsw;
  */
 public class SchermataLogin extends javax.swing.JFrame {
     
+    private String ID;
+    private String Password;
+    
     private ControllerSchermate controller;
     /**
      * Creates new form SchermataLogin
@@ -18,11 +21,14 @@ public class SchermataLogin extends javax.swing.JFrame {
     public SchermataLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        CredenzialiLabel.setVisible(false);
         }
+    
     public SchermataLogin(ControllerSchermate controller) {
         initComponents();
         this.controller = controller;  
         this.setLocationRelativeTo(null);
+        CredenzialiLabel.setVisible(false);
     }
 
     /**
@@ -45,6 +51,7 @@ public class SchermataLogin extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        CredenzialiLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CV19 Back Office - Login");
@@ -83,7 +90,7 @@ public class SchermataLogin extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         getContentPane().add(LoginButton, gridBagConstraints);
@@ -134,16 +141,36 @@ public class SchermataLogin extends javax.swing.JFrame {
         getContentPane().add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(filler4, gridBagConstraints);
+
+        CredenzialiLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CredenzialiLabel.setForeground(new java.awt.Color(255, 0, 51));
+        CredenzialiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CredenzialiLabel.setText("Credenziali sbagliate! Controlla di aver inserito ID e password giusti.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.weighty = 0.2;
+        getContentPane().add(CredenzialiLabel, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        controller.login();
+        ID = IDField.getText();
+        Password = PasswordField.getText();
+        
+        if(controller.checkCredenziali(ID, Password)) {
+            controller.login();
+            CredenzialiLabel.setVisible(false);
+        } else {
+            CredenzialiLabel.setVisible(true);
+        }        
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
@@ -182,6 +209,7 @@ public class SchermataLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CredenzialiLabel;
     private javax.swing.JTextField IDField;
     private javax.swing.JLabel IDLabel;
     private javax.swing.JButton LoginButton;
