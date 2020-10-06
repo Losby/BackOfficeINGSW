@@ -58,7 +58,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         CittaLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        CittaField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -247,25 +247,30 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
         getContentPane().add(CittaLabel, gridBagConstraints);
 
-        jTextField1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CittaField.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CittaField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IndirizzoFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.3;
-        getContentPane().add(jTextField1, gridBagConstraints);
+        getContentPane().add(CittaField, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AvantiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvantiButtonActionPerformed
-        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "I campi Indirizzo e Nome Struttura non possono essere vuoti!");
+        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("") || CittaField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "I campi Indirizzo, Città e Nome Struttura non possono essere vuoti!");
         }
         else {
             this.setVisible(false);
-            controller.showInserisciFoto();
+            controller.showInserisciFoto(NomeStrutturaField.getText(), IndirizzoField.getText(), CittaField.getText(), CategoriaBox.getSelectedItem().toString(), PrezzoBox.getSelectedIndex()+1 );
         }
     }//GEN-LAST:event_AvantiButtonActionPerformed
 
@@ -275,7 +280,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
     }//GEN-LAST:event_IndietroButtonActionPerformed
 
     private void IndirizzoFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IndirizzoFieldKeyPressed
-        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("")) {
+        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("") || CittaField.getText().equals("")) {
             AvantiButton.setEnabled(false);
         } else {
             AvantiButton.setEnabled(true);
@@ -283,7 +288,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
     }//GEN-LAST:event_IndirizzoFieldKeyPressed
 
     private void IndirizzoFieldMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IndirizzoFieldMouseMoved
-        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("")) {
+        if (IndirizzoField.getText().equals("") || NomeStrutturaField.getText().equals("") || CittaField.getText().equals("")) {
             AvantiButton.setEnabled(false);
         } else {
             AvantiButton.setEnabled(true);
@@ -329,6 +334,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
     private javax.swing.JButton AvantiButton;
     private javax.swing.JComboBox<String> CategoriaBox;
     private javax.swing.JLabel CategoriaLabel;
+    private javax.swing.JTextField CittaField;
     private javax.swing.JLabel CittaLabel;
     private javax.swing.JButton IndietroButton;
     private javax.swing.JTextField IndirizzoField;
@@ -342,6 +348,5 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
