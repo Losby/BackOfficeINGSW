@@ -26,6 +26,20 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         this.controller = controller;
         this.setLocationRelativeTo(null);
     }
+    
+    public void riempiDati(String Nome, String Indirizzo, String Citta, String Categoria, int Prezzo) {
+        NomeStrutturaText.setText(Nome);
+        IndirizzoText.setText(Indirizzo);
+        CittaText.setText(Citta);
+        CategoriaText.setText(Categoria);
+        if (Prezzo == 1) {
+            RangePrezzoText.setText("€");
+        } else if (Prezzo == 2) {
+            RangePrezzoText.setText("€€");
+        } else if (Prezzo == 3) {
+            RangePrezzoText.setText("€€€");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,15 +69,22 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        CittaLabel = new javax.swing.JLabel();
+        CittaText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         IndietroButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         IndietroButton.setText("Indietro");
+        IndietroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IndietroButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.2;
         getContentPane().add(IndietroButton, gridBagConstraints);
@@ -77,7 +98,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.2;
         getContentPane().add(ConfermaButton, gridBagConstraints);
@@ -158,7 +179,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         RangePrezzoLabel.setText("Range Prezzo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.2;
         gridBagConstraints.weighty = 0.1;
@@ -168,7 +189,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         RangePrezzoText.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.3;
         gridBagConstraints.weighty = 0.1;
@@ -183,9 +204,9 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
             .addGroup(FotoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(FotoPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 33, Short.MAX_VALUE)
                     .addComponent(Foto)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 33, Short.MAX_VALUE)))
         );
         FotoPanelLayout.setVerticalGroup(
             FotoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +229,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 9;
+        gridBagConstraints.gridheight = 11;
         gridBagConstraints.weightx = 0.1;
         getContentPane().add(filler1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -220,7 +241,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 9;
+        gridBagConstraints.gridheight = 11;
         gridBagConstraints.weightx = 0.4;
         getContentPane().add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -231,10 +252,30 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         getContentPane().add(filler4, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.weighty = 0.3;
         getContentPane().add(filler5, gridBagConstraints);
+
+        CittaLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CittaLabel.setText("Città");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weighty = 0.1;
+        getContentPane().add(CittaLabel, gridBagConstraints);
+
+        CittaText.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CittaText.setText("jLabel2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weighty = 0.1;
+        getContentPane().add(CittaText, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -249,6 +290,11 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_ConfermaButtonActionPerformed
+
+    private void IndietroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IndietroButtonActionPerformed
+        this.setVisible(false);
+        controller.showInserisciStruttura();
+    }//GEN-LAST:event_IndietroButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +334,8 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CategoriaLabel;
     private javax.swing.JLabel CategoriaText;
+    private javax.swing.JLabel CittaLabel;
+    private javax.swing.JLabel CittaText;
     private javax.swing.JButton ConfermaButton;
     private javax.swing.JLabel Foto;
     private javax.swing.JPanel FotoPanel;
