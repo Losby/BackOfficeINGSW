@@ -54,6 +54,14 @@ public class Struttura {
         return Citta;
     }
     
+    public void setPrezzo(int Prezzo) {
+        this.Prezzo = Prezzo;
+    }
+    
+    public void setCitta(String Citta) {
+        this.Citta = Citta;
+    }
+    
     public String getCategoria() {
         return Categoria;
     }
@@ -65,12 +73,17 @@ public class Struttura {
     public String getNomeStruttura() {
         return NomeStruttura;
     }
+    
     public void setNomeStruttura(String nome) {
         NomeStruttura = nome;
     }
     
     public String getIndirizzo() {
         return Indirizzo;
+    }
+    
+    public void setIndirizzo(String Indirizzo) {
+        this.Indirizzo = Indirizzo;
     }
     
     public void setIDStruttura(int IDStruttura) {
