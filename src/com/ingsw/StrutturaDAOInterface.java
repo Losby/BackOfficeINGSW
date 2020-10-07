@@ -4,15 +4,19 @@
  * and open the template in the editor.
  */
 package com.ingsw;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Marco
  */
 public interface StrutturaDAOInterface {
     
-  //  public LinkedList<Struttura> getAllStrutture();
+    public void setConnection();
+    public ArrayList<Struttura> getAllStrutture();
     public int updateStruttura(int ChiavePrimaria, Struttura PostModifica);
-    public void creaStruttura(Struttura StrutturaDaCaricare);
-    public void cancellaStruttura(int ChiavePrimaria);
+    public int creaStruttura(Struttura StrutturaDaCaricare);
+    public int cancellaStruttura(int ChiavePrimaria);
     
 }
