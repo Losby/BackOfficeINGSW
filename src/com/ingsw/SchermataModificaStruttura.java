@@ -15,6 +15,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
 
     private ControllerSchermate controller;
     private boolean Modifica;
+    private int CodiceStruttura;
     /**
      * Creates new form SchermataModificaStruttura
      */
@@ -60,8 +61,9 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
     public void setStruttura(Struttura DaModificare) {
         NomeStrutturaLabel.setText(DaModificare.getNomeStruttura());
         IndirizzoField.setText(DaModificare.getIndirizzo());
-        PrezzoBox.setSelectedIndex(DaModificare.getPrezzo());
+        PrezzoBox.setSelectedIndex(DaModificare.getPrezzo()-1);
         CittaField.setText(DaModificare.getCitta());
+        CodiceStruttura = DaModificare.getIDStruttura();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -316,7 +318,15 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void EliminaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminaButtonActionPerformed
-        // TODO add your handling code here:
+        int ret = JOptionPane.showConfirmDialog(this, "Sei davvero sicuro di voler eliminare la struttura dal database?\nTutte le informazioni relative ad essa andranno perse e il processo è irreversibile.", "Attenzione! Eliminare?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(ret == JOptionPane.NO_OPTION) {
+            return;
+        }
+        controller.eliminaStruttura(CodiceStruttura);
+        JOptionPane.showConfirmDialog(this, "Struttura eliminata dal database.", "Struttura eliminata.", JOptionPane.DEFAULT_OPTION);
+        fineModifica();
+        this.setVisible(false);
+        controller.showStruttureRegistrate("Strutture");
     }//GEN-LAST:event_EliminaButtonActionPerformed
 
     private void ModificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificaButtonActionPerformed
@@ -324,6 +334,15 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificaButtonActionPerformed
 
     private void ConfermaModificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfermaModificaButtonActionPerformed
+        Struttura PostModifica = new Struttura();
+        
+        PostModifica.setIDStruttura(CodiceStruttura);
+        PostModifica.setNomeStruttura(NomeStrutturaLabel.getText());
+        PostModifica.setIndirizzo(IndirizzoField.getText());
+        PostModifica.setCitta(CittaField.getText());
+        PostModifica.setPrezzo(PrezzoBox.getSelectedIndex()+1);
+        
+        controller.modificaStruttura(CodiceStruttura, PostModifica);
         fineModifica();
     }//GEN-LAST:event_ConfermaModificaButtonActionPerformed
 
