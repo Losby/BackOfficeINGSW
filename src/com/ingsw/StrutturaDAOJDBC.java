@@ -124,7 +124,7 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
     }
 
     @Override
-    public int creaStruttura(Struttura StrutturaDaCaricare) {
+    public int createStruttura(Struttura StrutturaDaCaricare) {
         int ret = -1;
         try {
             PreparedStatement prepStat = Connessione.prepareStatement(SQLInsert);
@@ -142,7 +142,7 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
     }
 
     @Override
-    public int cancellaStruttura(int ChiavePrimaria) {
+    public int deleteStruttura(int ChiavePrimaria) {
         int ret = -1;
         
         try {

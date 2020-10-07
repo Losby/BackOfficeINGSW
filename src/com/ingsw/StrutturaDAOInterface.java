@@ -16,7 +16,7 @@ public interface StrutturaDAOInterface {
     public void setConnection();
     public ArrayList<Struttura> getAllStrutture();
     public int updateStruttura(int ChiavePrimaria, Struttura PostModifica);
-    public int creaStruttura(Struttura StrutturaDaCaricare);
-    public int cancellaStruttura(int ChiavePrimaria);
+    public int createStruttura(Struttura StrutturaDaCaricare);
+    public int deleteStruttura(int ChiavePrimaria);
     
 }
