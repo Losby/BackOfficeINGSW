@@ -5,6 +5,8 @@
  */
 package com.ingsw;
 
+import java.io.File;
+
 /**
  *
  * @author Marco
@@ -17,6 +19,7 @@ public class Struttura {
     private String Categoria;
     private int IDStruttura;
     private String LinkImmagine;
+    private File FotoStruttura;
     
     public Struttura() {}
     
@@ -48,6 +51,22 @@ public class Struttura {
             RangePrezzo = "€€€";
         }
         return ""+NomeStruttura+", "+Indirizzo+", "+Citta+", "+Categoria+", "+RangePrezzo+"";
+    }
+    
+    public void setURLFoto(String URL) {
+        LinkImmagine = URL;
+    }
+    
+    public String getURLFoto() {
+        return LinkImmagine;
+    }
+    
+    public void setFoto(File Foto) {
+        FotoStruttura = Foto;
+    }
+    
+    public File getFoto() {
+        return FotoStruttura;
     }
     
     public String getCitta() {
