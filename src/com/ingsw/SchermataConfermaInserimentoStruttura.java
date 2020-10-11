@@ -5,6 +5,13 @@
  */
 package com.ingsw;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,11 +34,17 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    public void riempiDati(String Nome, String Indirizzo, String Citta, String Categoria, int Prezzo) {
+    public void riempiDati(String Nome, String Indirizzo, String Citta, String Categoria, int Prezzo, File FotoStruttura) {
         NomeStrutturaText.setText(Nome);
         IndirizzoText.setText(Indirizzo);
         CittaText.setText(Citta);
         CategoriaText.setText(Categoria);
+        try {
+            Image dimg = ImageIO.read(FotoStruttura).getScaledInstance(400, 300, Image.SCALE_SMOOTH);
+            Foto.setIcon(new ImageIcon(dimg));
+        } catch (IOException ex) {
+            Logger.getLogger(SchermataConfermaInserimentoStruttura.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (Prezzo == 1) {
             RangePrezzoText.setText("€");
         } else if (Prezzo == 2) {
@@ -195,8 +208,6 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(RangePrezzoText, gridBagConstraints);
 
-        Foto.setText("jLabel1");
-
         javax.swing.GroupLayout FotoPanelLayout = new javax.swing.GroupLayout(FotoPanel);
         FotoPanel.setLayout(FotoPanelLayout);
         FotoPanelLayout.setHorizontalGroup(
@@ -204,9 +215,9 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
             .addGroup(FotoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(FotoPanelLayout.createSequentialGroup()
-                    .addGap(0, 33, Short.MAX_VALUE)
+                    .addGap(0, 50, Short.MAX_VALUE)
                     .addComponent(Foto)
-                    .addGap(0, 33, Short.MAX_VALUE)))
+                    .addGap(0, 50, Short.MAX_VALUE)))
         );
         FotoPanelLayout.setVerticalGroup(
             FotoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

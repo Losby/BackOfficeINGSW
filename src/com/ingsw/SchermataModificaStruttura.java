@@ -5,6 +5,15 @@
  */
 package com.ingsw;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +25,8 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
     private ControllerSchermate controller;
     private boolean Modifica;
     private int CodiceStruttura;
+    private SchermataSelezionaFoto ModificaFoto;
+    private File FotoNuova;
     /**
      * Creates new form SchermataModificaStruttura
      */
@@ -26,6 +37,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         ConfermaModificaButton.setVisible(false);
         ModificaFotoButton.setVisible(false);
         Modifica = false;
+        ModificaFoto = new SchermataSelezionaFoto(this);
     }
     public SchermataModificaStruttura(ControllerSchermate controller) {
         initComponents();
@@ -34,6 +46,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         ConfermaModificaButton.setVisible(false);
         ModificaFotoButton.setVisible(false);
         Modifica = false;
+        ModificaFoto = new SchermataSelezionaFoto(this);
     }
     
     private void inizioModifica() {
@@ -58,12 +71,28 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         Modifica = false;
     }
     
+    public void modificaFoto(File FotoNuova) {
+        try {
+            FotoLabel.setIcon(new ImageIcon(ImageIO.read(FotoNuova).getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
+            this.FotoNuova = FotoNuova;
+        } catch (IOException ex) {
+            Logger.getLogger(SchermataModificaStruttura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void setStruttura(Struttura DaModificare) {
         NomeStrutturaLabel.setText(DaModificare.getNomeStruttura());
         IndirizzoField.setText(DaModificare.getIndirizzo());
         PrezzoBox.setSelectedIndex(DaModificare.getPrezzo()-1);
         CittaField.setText(DaModificare.getCitta());
         CodiceStruttura = DaModificare.getIDStruttura();
+        try {
+            FotoLabel.setIcon(new ImageIcon(ImageIO.read(new URL(DaModificare.getURLFoto())).getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(SchermataModificaStruttura.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SchermataModificaStruttura.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,7 +106,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
 
         BackButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        FotoLabel = new javax.swing.JLabel();
         NomeStrutturaLabel = new javax.swing.JLabel();
         IndirizzoLabel = new javax.swing.JLabel();
         IndirizzoField = new javax.swing.JTextField();
@@ -112,31 +141,22 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(BackButton, gridBagConstraints);
 
-        jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(FotoLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weighty = 0.2;
         getContentPane().add(jPanel1, gridBagConstraints);
 
         NomeStrutturaLabel.setFont(new java.awt.Font("Corbel", 1, 36)); // NOI18N
@@ -294,6 +314,11 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         getContentPane().add(ConfermaModificaButton, gridBagConstraints);
 
         ModificaFotoButton.setText("Modifca Foto");
+        ModificaFotoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificaFotoButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -341,10 +366,17 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         PostModifica.setIndirizzo(IndirizzoField.getText());
         PostModifica.setCitta(CittaField.getText());
         PostModifica.setPrezzo(PrezzoBox.getSelectedIndex()+1);
+        if(FotoNuova != null) {
+            PostModifica.setURLFoto(controller.caricaFoto(this.FotoNuova));
+        }
         
         controller.modificaStruttura(CodiceStruttura, PostModifica);
         fineModifica();
     }//GEN-LAST:event_ConfermaModificaButtonActionPerformed
+
+    private void ModificaFotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificaFotoButtonActionPerformed
+        ModificaFoto.setVisible(true);
+    }//GEN-LAST:event_ModificaFotoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,6 +419,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
     private javax.swing.JLabel CittaLabel;
     private javax.swing.JButton ConfermaModificaButton;
     private javax.swing.JButton EliminaButton;
+    private javax.swing.JLabel FotoLabel;
     private javax.swing.JTextField IndirizzoField;
     private javax.swing.JLabel IndirizzoLabel;
     private javax.swing.JButton ModificaButton;
@@ -398,7 +431,6 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

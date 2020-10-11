@@ -5,6 +5,15 @@
  */
 package com.ingsw;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Marco
@@ -13,6 +22,7 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
     
     private SchermataSelezionaFoto FotoChooser;
     private ControllerSchermate controller;
+    private File FotoCaricata;
     /**
      * Creates new form SchermataInserisciFoto
      */
@@ -25,6 +35,21 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         this.controller = controller;
         this.setLocationRelativeTo(null);
         FotoChooser = new SchermataSelezionaFoto(this);
+    }
+    public void setFoto(File Foto) {
+        FotoCaricata = Foto;
+        mostraFoto();
+        controller.setFoto(Foto);
+    }
+    
+    private void mostraFoto() {
+        try {
+            DirectoryFotoLabel.setText(FotoCaricata.getPath());
+            Image dimg = ImageIO.read(FotoCaricata).getScaledInstance(800, 600, Image.SCALE_SMOOTH);
+            FotoLabel.setIcon(new ImageIcon(dimg));
+        } catch (IOException ex) {
+            Logger.getLogger(SchermataInserisciFoto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -61,32 +86,18 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.3;
         getContentPane().add(IntestazioneLabelFoto, gridBagConstraints);
 
-        FotoLabel.setText("jLabel2");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(FotoLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 14, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(FotoLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(FotoLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jPanel1, gridBagConstraints);
@@ -165,8 +176,13 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
     }//GEN-LAST:event_IndietroButtonFotoActionPerformed
 
     private void CompletaProceduraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompletaProceduraButtonActionPerformed
-        this.setVisible(false);
-        controller.showConfermaInserimento();
+        
+        if(FotoCaricata != null) {
+            this.setVisible(false);
+            controller.showConfermaInserimento();
+        } else {
+            JOptionPane.showMessageDialog(this, "Scegli una foto per la struttura prima di continuare!", "Scegli una foto!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_CompletaProceduraButtonActionPerformed
 
     private void CaricaFotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaricaFotoButtonActionPerformed
