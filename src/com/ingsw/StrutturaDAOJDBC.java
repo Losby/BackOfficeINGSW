@@ -27,7 +27,7 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
         "SET\n" +
         "`indirizzo` = ?,\n" +
         "`città` = ?,\n" +
-        "`range_prezzo` = ?\n" +
+        "`range_prezzo` = ?,\n" + "`link_immagine` = ?\n" +
         "WHERE `cod_struttura` = ?;";
     private final String SQLDelete = "DELETE FROM `struttura` WHERE `cod_struttura` = ?";
     
@@ -114,7 +114,8 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
             prepStat.setString(1, PostModifica.getIndirizzo());
             prepStat.setString(2, PostModifica.getCitta());
             prepStat.setInt(3, PostModifica.getPrezzo());
-            prepStat.setInt(4, ChiavePrimaria);
+            prepStat.setString(4, PostModifica.getURLFoto());
+            prepStat.setInt(5, ChiavePrimaria);
             
             ret = prepStat.executeUpdate();
         } catch (SQLException ex) {
