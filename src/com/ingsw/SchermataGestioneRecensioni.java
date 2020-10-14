@@ -5,6 +5,20 @@
  */
 package com.ingsw;
 
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.TextField;
+import java.util.ArrayList;
+import javax.swing.Box.Filler;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Marco
@@ -25,6 +39,129 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
         initComponents();
         this.controller = controller;
         this.setLocationRelativeTo(null);
+        NienteRecensioniLabel.setVisible(false);
+    }
+    
+    public void riempiPanel(ArrayList<Recensione> ListaRecensioni) {  
+        if(ListaRecensioni != null){
+            
+            if(!(ListaRecensioni.isEmpty())) {
+                NienteRecensioniLabel.setVisible(false);
+                jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.PAGE_AXIS));
+                for (Recensione RecensioneTemp : ListaRecensioni) {
+                    JPanel temp = new JPanel();
+                    JTextField jTextField1 = new JTextField(RecensioneTemp.getDescrizione());
+                    JButton ApprovaButton = new JButton("Approva");
+                    JButton RifiutaButton = new JButton("Rifiuta");
+                    JLabel UserEPunteggio = new JLabel(RecensioneTemp.getUser() + ", " + RecensioneTemp.getNumeroStelle() +"*");
+                    
+                    GridBagLayout layout = new java.awt.GridBagLayout();
+                    temp.setLayout(layout);
+                    
+                    temp.add(jTextField1);
+                    temp.add(ApprovaButton);
+                    temp.add(RifiutaButton);
+                    temp.add(UserEPunteggio);
+
+                    settaTextField(layout, temp, jTextField1);
+                    settaButtonApprova(layout, temp, ApprovaButton, RecensioneTemp);
+                    settaButtonRifiuta(layout, temp, RifiutaButton, RecensioneTemp);
+                    settaLabel(layout, temp, UserEPunteggio);
+                    jPanel1.add(temp);
+                }
+            } else {
+                jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.LINE_AXIS));
+                svuotaPanel();
+                NienteRecensioniLabel.setVisible(true);
+            }
+        }
+       pack();
+    }
+    
+    private void svuotaPanel() {
+        Component[] Components = jPanel1.getComponents();
+        if(Components.length != 1) {
+            for(int i = 0; i < Components.length; i++) {
+                if (Components[i] != NienteRecensioniLabel) jPanel1.remove(Components[i]);
+            }
+        }
+    }
+    
+    private void settaTextField(GridBagLayout layout, JPanel temp, JTextField jTextField1) {
+        GridBagConstraints gridBagConstraintini;
+        gridBagConstraintini = layout.getConstraints(jTextField1);
+        gridBagConstraintini.gridx = 0;
+        gridBagConstraintini.gridy = 1;
+        gridBagConstraintini.gridwidth = 6;
+        gridBagConstraintini.gridheight = 2;
+        gridBagConstraintini.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraintini.weightx = 1.0;
+        gridBagConstraintini.weighty = 1.0;
+        layout.setConstraints(jTextField1, gridBagConstraintini);
+    }
+    
+    private void settaButtonApprova(GridBagLayout layout, JPanel temp, JButton bottone, Recensione RecensioneDaApprovare) {
+        GridBagConstraints gridBagConstraintini;
+        bottone.addActionListener(new java.awt.event.ActionListener() {
+            private Recensione Recensione = RecensioneDaApprovare;
+            private JPanel pannello = temp;
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //bottoneActionPerformed(evt);
+                int ret = JOptionPane.showConfirmDialog(rootPane, "Sei sicuro di voler approvare questa recensione?", "Approvare la recensione?", JOptionPane.YES_NO_OPTION);
+                if(ret == JOptionPane.YES_OPTION) {
+                    controller.approvaRecensione(Recensione);
+                    controller.eliminaRecensione(Recensione.getCodiceRecensione());
+                    jPanel1.remove(pannello);
+                    jPanel1.revalidate();
+                    jPanel1.repaint();
+                }                 
+            }
+        });
+        gridBagConstraintini = layout.getConstraints(bottone);
+        gridBagConstraintini.gridx = 4;
+        gridBagConstraintini.gridy = 0;
+        gridBagConstraintini.anchor = java.awt.GridBagConstraints.SOUTHEAST;
+        gridBagConstraintini.weightx = 0.1;
+        gridBagConstraintini.weighty = 0.25;
+        layout.setConstraints(bottone, gridBagConstraintini);
+    }
+    
+    private void settaButtonRifiuta(GridBagLayout layout, JPanel temp, JButton bottone, Recensione RecensioneDaRifiutare) {
+        GridBagConstraints gridBagConstraintini;
+        bottone.addActionListener(new java.awt.event.ActionListener() {
+            private Recensione Recensione = RecensioneDaRifiutare;
+            private JPanel pannello = temp;
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //bottoneActionPerformed(evt);
+                int ret = JOptionPane.showConfirmDialog(rootPane, "Sei sicuro di voler rifiutare questa recensione?", "Rifiutare la recensione?", JOptionPane.YES_NO_OPTION);
+                if(ret == JOptionPane.YES_OPTION) {
+                    controller.eliminaRecensione(Recensione.getCodiceRecensione());
+                    jPanel1.remove(pannello);
+                    jPanel1.revalidate();
+                    jPanel1.repaint();
+                }
+            }
+        });
+        gridBagConstraintini = layout.getConstraints(bottone);
+        gridBagConstraintini.gridx = 5;
+        gridBagConstraintini.gridy = 0;
+        gridBagConstraintini.anchor = java.awt.GridBagConstraints.SOUTHEAST;
+        gridBagConstraintini.weightx = 0.1;
+        gridBagConstraintini.weighty = 0.25;
+        layout.setConstraints(bottone, gridBagConstraintini);
+    }
+    
+    private void settaLabel(GridBagLayout layout, JPanel temp, JLabel jLabel1) {
+        GridBagConstraints gridBagConstraints;
+        gridBagConstraints = layout.getConstraints(jLabel1);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.weightx = 2;
+        gridBagConstraints.weighty = 0.25;
+        layout.setConstraints(jLabel1, gridBagConstraints);
     }
     
     public void setStruttura(Struttura DaGestire) {
@@ -45,7 +182,8 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
         IntestazioneLabel = new javax.swing.JLabel();
         IndietroButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        jPanel1 = new javax.swing.JPanel();
+        NienteRecensioniLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -58,7 +196,7 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.weightx = 5.0;
         gridBagConstraints.weighty = 0.2;
         getContentPane().add(IntestazioneLabel, gridBagConstraints);
 
@@ -76,20 +214,25 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(IndietroButton, gridBagConstraints);
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+
+        NienteRecensioniLabel.setFont(new java.awt.Font("Corbel", 0, 36)); // NOI18N
+        NienteRecensioniLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NienteRecensioniLabel.setText("Non ci sono recensioni in attesa di approvazione.");
+        jPanel1.add(NienteRecensioniLabel);
+
+        jScrollPane1.setViewportView(jPanel1);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 7;
         gridBagConstraints.gridheight = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.weighty = 1.0E-4;
-        getContentPane().add(filler1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,7 +280,8 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton IndietroButton;
     private javax.swing.JLabel IntestazioneLabel;
-    private javax.swing.Box.Filler filler1;
+    private javax.swing.JLabel NienteRecensioniLabel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
