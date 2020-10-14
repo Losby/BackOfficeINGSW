@@ -5,6 +5,7 @@
  */
 package com.ingsw;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,9 @@ import java.util.ArrayList;
  */
 public interface RecensioneDAOInterface {
     
-    public ArrayList<Recensione> getAllRecensioni(Struttura StrutturaDaGestire);
-    
+    public void setConnection(Connection Connessione);
+    public ArrayList<Recensione> getAllRecensioni(int CodiceStruttura);
+    public int deleteRecensione(int CodiceRecensione);
+    public void approvaRecensione(Recensione DaApprovare);
     
 }
