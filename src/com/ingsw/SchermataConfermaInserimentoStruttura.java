@@ -116,7 +116,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.2;
         getContentPane().add(ConfermaButton, gridBagConstraints);
 
-        IntestazioneLabel.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
+        IntestazioneLabel.setFont(new java.awt.Font("Corbel", 0, 28)); // NOI18N
         IntestazioneLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IntestazioneLabel.setText("Controlla i dati inseriti prima di confermare l'inserimento");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -124,11 +124,11 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weightx = 0.8;
         gridBagConstraints.weighty = 0.2;
         getContentPane().add(IntestazioneLabel, gridBagConstraints);
 
-        NomeStrutturaLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        NomeStrutturaLabel.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
         NomeStrutturaLabel.setText("Nome Struttura");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -138,7 +138,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(NomeStrutturaLabel, gridBagConstraints);
 
-        NomeStrutturaText.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        NomeStrutturaText.setFont(new java.awt.Font("Corbel", 0, 20)); // NOI18N
         NomeStrutturaText.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -148,7 +148,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(NomeStrutturaText, gridBagConstraints);
 
-        CategoriaLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CategoriaLabel.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
         CategoriaLabel.setText("Categoria");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -158,7 +158,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(CategoriaLabel, gridBagConstraints);
 
-        CategoriaText.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CategoriaText.setFont(new java.awt.Font("Corbel", 0, 20)); // NOI18N
         CategoriaText.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -168,7 +168,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(CategoriaText, gridBagConstraints);
 
-        IndirizzoLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        IndirizzoLabel.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
         IndirizzoLabel.setText("Indirizzo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -178,7 +178,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(IndirizzoLabel, gridBagConstraints);
 
-        IndirizzoText.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        IndirizzoText.setFont(new java.awt.Font("Corbel", 0, 20)); // NOI18N
         IndirizzoText.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -188,7 +188,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(IndirizzoText, gridBagConstraints);
 
-        RangePrezzoLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        RangePrezzoLabel.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
         RangePrezzoLabel.setText("Range Prezzo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -198,7 +198,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(RangePrezzoLabel, gridBagConstraints);
 
-        RangePrezzoText.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        RangePrezzoText.setFont(new java.awt.Font("Corbel", 0, 20)); // NOI18N
         RangePrezzoText.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -253,7 +253,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 11;
-        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weightx = 0.6;
         getContentPane().add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -268,7 +268,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.3;
         getContentPane().add(filler5, gridBagConstraints);
 
-        CittaLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CittaLabel.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
         CittaLabel.setText("Città");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -278,7 +278,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(CittaLabel, gridBagConstraints);
 
-        CittaText.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        CittaText.setFont(new java.awt.Font("Corbel", 0, 20)); // NOI18N
         CittaText.setText("jLabel2");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -295,6 +295,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         int input;
         input = JOptionPane.showConfirmDialog(this, "Confermi il caricamento di questi dati sul nostro database?\nLa struttura sarà visibile dagli utenti della nostra app con questi dati.", "Conferma?", JOptionPane.OK_CANCEL_OPTION);
         if(input == JOptionPane.OK_OPTION) {
+            controller.confermaInsert();
             if(JOptionPane.showConfirmDialog(this, "La struttura è stata caricata con successo sul database.", "Inserimento avvenuto con successo.", JOptionPane.DEFAULT_OPTION) == JOptionPane.OK_OPTION) {
                 this.setVisible(false);
                 controller.showMenu();
