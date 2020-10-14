@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class StrutturaDAOJDBC implements StrutturaDAOInterface {
 
     private Connection Connessione;
-    private final String SQLInsert = "INSERT INTO 'struttura' ('nome', 'indirizzo', 'città', 'tipo_struttura', 'range_prezzo') VALUES (?, ?, ?, ?, ?)";
+    private final String SQLInsert = "INSERT INTO `struttura` (`nome`, `indirizzo`, `città`, `tipo_struttura`, `range_prezzo`, `link_immagine`) VALUES (?, ?, ?, ?, ?, ?)";
     private final String SQLUpdate = "UPDATE `struttura`\n" +
         "SET\n" +
         "`indirizzo` = ?,\n" +
@@ -61,6 +61,9 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
         return;
   }
   
+    public Connection getConnection() {
+        return Connessione;
+    }
 
     @Override
     public ArrayList<Struttura> getAllStrutture() {
@@ -134,6 +137,7 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
             prepStat.setString(3, StrutturaDaCaricare.getCitta());
             prepStat.setString(4, StrutturaDaCaricare.getCategoria());
             prepStat.setInt(5, StrutturaDaCaricare.getPrezzo());
+            prepStat.setString(6, StrutturaDaCaricare.getURLFoto());
             
             ret = prepStat.executeUpdate();
         } catch (SQLException ex) {
