@@ -11,7 +11,7 @@ package com.ingsw;
  */
 public class Recensione {
     private int CodiceRecensione;
-    private int NumeroStelle;
+    private float NumeroStelle;
     private String DescrizioneTestuale;
     private int CodiceStruttura;
     private String Utente;
@@ -20,11 +20,19 @@ public class Recensione {
         
     }
     
-    public Recensione(int CodiceRecensione, int NumeroStelle, String DescrizioneTestuale, int CodiceStruttura, String Utente) {
+    public Recensione(int CodiceRecensione, float NumeroStelle, String DescrizioneTestuale, String Utente) {
+        this.CodiceRecensione = CodiceRecensione;
+        this.NumeroStelle = NumeroStelle;
+        this.DescrizioneTestuale = DescrizioneTestuale;
+        this.Utente = Utente;
+    }
+    
+    public Recensione(int CodiceRecensione, float NumeroStelle, String DescrizioneTestuale, int CodiceStruttura, String Utente) {
         this.CodiceRecensione = CodiceRecensione;
         this.NumeroStelle = NumeroStelle;
         this.DescrizioneTestuale = DescrizioneTestuale;
         this.CodiceStruttura = CodiceStruttura;
+        this.Utente = Utente;
     }
     
     public int getCodiceRecensione() {
@@ -35,9 +43,23 @@ public class Recensione {
         this.CodiceRecensione = CodiceRecensione;
     }
     
-    public int getNumeroStelle() {
+    public float getNumeroStelle() {
         return NumeroStelle;
     }
     
+    public String getDescrizione() {
+        return DescrizioneTestuale;
+    }
     
+    public String getUser() {
+        return Utente;
+    }
+    
+    public int getCodiceStruttura() {
+        return CodiceStruttura;
+    }
+    
+    public String toString() {
+        return Utente + ", " + NumeroStelle + "*, " + DescrizioneTestuale;
+    }
 }
