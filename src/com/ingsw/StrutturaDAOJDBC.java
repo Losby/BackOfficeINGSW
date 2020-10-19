@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class StrutturaDAOJDBC implements StrutturaDAOInterface {
 
     private Connection Connessione;
-    private final String SQLInsert = "INSERT INTO `struttura` (`nome`, `indirizzo`, `città`, `tipo_struttura`, `range_prezzo`, `link_immagine`) VALUES (?, ?, ?, ?, ?, ?)";
+    private final String SQLInsert = "INSERT INTO `struttura` (`nome`, `indirizzo`, `città`, `tipo_struttura`, `range_prezzo`, `link_immagine`, `latitudine`, `longitudine` ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private final String SQLUpdate = "UPDATE `struttura`\n" +
         "SET\n" +
         "`indirizzo` = ?,\n" +
@@ -31,7 +31,11 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
         "WHERE `cod_struttura` = ?;";
     private final String SQLDelete = "DELETE FROM `struttura` WHERE `cod_struttura` = ?";
     
-    public StrutturaDAOJDBC() { }
+    private GoogleAPIClient Geocoder;
+    
+    public StrutturaDAOJDBC() { 
+        Geocoder = new GoogleAPIClient();
+    }
     
     @Override
     public void setConnection() {
@@ -139,10 +143,17 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
             prepStat.setInt(5, StrutturaDaCaricare.getPrezzo());
             prepStat.setString(6, StrutturaDaCaricare.getURLFoto());
             
+            String[] Coordinate = Geocoder.getLatLongPositions(""+StrutturaDaCaricare.getNomeStruttura()+", "+StrutturaDaCaricare.getIndirizzo()+", "+StrutturaDaCaricare.getCitta()+"");
+            
+            prepStat.setString(7, Coordinate[0]);
+            prepStat.setString(8, Coordinate[1]);
+            
             ret = prepStat.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        } catch (Exception ex) {   
+            Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return ret;
     }
 
