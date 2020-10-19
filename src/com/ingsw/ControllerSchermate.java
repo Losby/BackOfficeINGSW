@@ -5,6 +5,12 @@
  */
 package com.ingsw;
 
+import java.io.File;
+import java.sql.Connection;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Marco
@@ -18,6 +24,11 @@ public class ControllerSchermate {
     private final SchermataInserimentoStruttura InserisciStruttura;
     private final SchermataInserisciFoto InserisciFoto;
     private final SchermataConfermaInserimentoStruttura ConfermaOperazioneInserimento;
+    private final SchermataGestioneRecensioni GestisciRecensioni;
+    private StrutturaDAOInterface DAOStruttura;
+    private RecensioneDAOInterface DAORecensione;
+    private static Struttura StrutturaDaInserire;
+    private final AWSUploader UploaderAWS;
     
     public ControllerSchermate() {
         super();
@@ -29,11 +40,13 @@ public class ControllerSchermate {
         InserisciStruttura = new SchermataInserimentoStruttura(this);
         InserisciFoto = new SchermataInserisciFoto(this);
         ConfermaOperazioneInserimento = new SchermataConfermaInserimentoStruttura(this);
+        GestisciRecensioni = new SchermataGestioneRecensioni(this);
+        UploaderAWS = new AWSUploader();
     }
     
     public static void main(String args[]) {
-        ControllerSchermate controller = new ControllerSchermate();
-        controller.run();
+       ControllerSchermate controller = new ControllerSchermate();
+       controller.run();     
     }
     
     private void run() {
@@ -41,6 +54,10 @@ public class ControllerSchermate {
     }
     
     public void login(){
+        DAOStruttura = new StrutturaDAOJDBC();
+        DAORecensione = new RecensioneDAOJDBC();
+        DAOStruttura.setConnection();
+        DAORecensione.setConnection(((StrutturaDAOJDBC)DAOStruttura).getConnection());
         Login.setVisible(false);
         Menu.setVisible(true);
     }
@@ -49,9 +66,22 @@ public class ControllerSchermate {
         Menu.setVisible(true);
     }
     
+    public String caricaFoto(File Foto) {
+        return UploaderAWS.caricaFoto(Foto);
+    }
+    
     public void showStruttureRegistrate(String Operazione) {
         ModificaStruttureRegistrate.setOperazione(Operazione);
+        ModificaStruttureRegistrate.elencaStrutture(DAOStruttura.getAllStrutture());
         ModificaStruttureRegistrate.setVisible(true);
+    }
+    
+    public void modificaStruttura(int ChiavePrimaria, Struttura PostModifica) {
+        DAOStruttura.updateStruttura(ChiavePrimaria, PostModifica);
+    }
+    
+    public void eliminaStruttura(int ChiavePrimaria) {
+        DAOStruttura.deleteStruttura(ChiavePrimaria);
     }
     
     public void showGestioneStrutture() {
@@ -62,7 +92,14 @@ public class ControllerSchermate {
         Login.setVisible(true);
     }
     
-    public void showModificaStruttura() {
+    public void showGestioneRecensioni(Struttura StrutturaDaGestire) {
+        GestisciRecensioni.setStruttura(StrutturaDaGestire);
+        GestisciRecensioni.riempiPanel(DAORecensione.getAllRecensioni(StrutturaDaGestire.getIDStruttura()));
+        GestisciRecensioni.setVisible(true);
+    }
+    
+    public void showModificaStruttura(Struttura Struttura) {
+        ModificaStruttura.setStruttura(Struttura);
         ModificaStruttura.setVisible(true);
     }
     
@@ -70,11 +107,46 @@ public class ControllerSchermate {
         InserisciStruttura.setVisible(true);
     }
     
-    public void showInserisciFoto() {
+    public void showInserisciStruttura(File Foto) {
+        StrutturaDaInserire.setFoto(Foto);
+        InserisciStruttura.setVisible(true);
+    }
+    
+    public void showInserisciFoto(String Nome, String Indirizzo, String Citta, String Categoria, int Prezzo) {
+        StrutturaDaInserire = new Struttura(Nome, Indirizzo, Citta, Prezzo, Categoria);
         InserisciFoto.setVisible(true);
     }
     
     public void showConfermaInserimento() {
+        ConfermaOperazioneInserimento.riempiDati(StrutturaDaInserire.getNomeStruttura(), StrutturaDaInserire.getIndirizzo(), StrutturaDaInserire.getCitta(), StrutturaDaInserire.getCategoria(), StrutturaDaInserire.getPrezzo(), StrutturaDaInserire.getFoto());
         ConfermaOperazioneInserimento.setVisible(true);
+    }
+    
+    public boolean checkCredenziali(String ID, String Password) {
+        return (ID.equals("admin") && Password.equals("password"));
+    }
+    
+    public int confermaInsert() {
+        StrutturaDaInserire.setURLFoto(UploaderAWS.caricaFoto(StrutturaDaInserire.getFoto()));
+        int ret = DAOStruttura.createStruttura(StrutturaDaInserire);
+        
+        return ret;
+    }
+    
+    public void setFoto(File Foto) {
+        StrutturaDaInserire.setFoto(Foto);
+    }
+    
+    public void eliminaRecensione(int CodiceRecensione) {
+        DAORecensione.deleteRecensione(CodiceRecensione);
+    }
+    
+    public void approvaRecensione(Recensione DaApprovare) {
+        DAORecensione.approvaRecensione(DaApprovare);
+    }
+    
+    public void fineInserimento() {
+        InserisciStruttura.svuotaCampi();
+        InserisciFoto.svuotaCampi();
     }
 }
