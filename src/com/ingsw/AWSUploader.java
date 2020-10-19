@@ -60,14 +60,4 @@ public class AWSUploader {
         return null;
     }
     
-    public void getFotoDaURI(String URIFoto) {
-        try {
-            URI fileToBeDownloaded = new URI(URIFoto);
-            AmazonS3URI s3URI = new AmazonS3URI(fileToBeDownloaded);
-            S3Object s3Object = s3Client.getObject(s3URI.getBucket(), s3URI.getKey());
-            
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(AWSUploader.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }
