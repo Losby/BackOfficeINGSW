@@ -295,11 +295,19 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         int input;
         input = JOptionPane.showConfirmDialog(this, "Confermi il caricamento di questi dati sul nostro database?\nLa struttura sarà visibile dagli utenti della nostra app con questi dati.", "Conferma?", JOptionPane.OK_CANCEL_OPTION);
         if(input == JOptionPane.OK_OPTION) {
-            controller.confermaInsert();
-            if(JOptionPane.showConfirmDialog(this, "La struttura è stata caricata con successo sul database.", "Inserimento avvenuto con successo.", JOptionPane.DEFAULT_OPTION) == JOptionPane.OK_OPTION) {
-                this.setVisible(false);
-                controller.showMenu();
+            int ret = controller.confermaInsert();
+            if(ret > 0) {
+                if(JOptionPane.showConfirmDialog(this, "La struttura è stata caricata con successo sul database.", "Inserimento avvenuto con successo.", JOptionPane.DEFAULT_OPTION) == JOptionPane.OK_OPTION) {
+                    this.setVisible(false);
+                    controller.showMenu();
+                }
+            } else {
+                if(JOptionPane.showConfirmDialog(this, "C'è stato un errore durante il carimento della struttura, riprova più tardi.", "Errore durante l'inserimento.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE) == JOptionPane.OK_OPTION) {
+                    this.setVisible(false);
+                    controller.showMenu();
+                }
             }
+            controller.fineInserimento();
         }
     }//GEN-LAST:event_ConfermaButtonActionPerformed
 
@@ -308,40 +316,6 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         controller.showInserisciStruttura();
     }//GEN-LAST:event_IndietroButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SchermataConfermaInserimentoStruttura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SchermataConfermaInserimentoStruttura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SchermataConfermaInserimentoStruttura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SchermataConfermaInserimentoStruttura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SchermataConfermaInserimentoStruttura().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CategoriaLabel;
