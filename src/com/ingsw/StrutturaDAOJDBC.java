@@ -150,9 +150,9 @@ public class StrutturaDAOJDBC implements StrutturaDAOInterface {
             
             ret = prepStat.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            ret = -1;
         } catch (Exception ex) {   
-            Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            ret = -1;
         }
         return ret;
     }

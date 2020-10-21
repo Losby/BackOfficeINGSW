@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public interface RecensioneDAOInterface {
     
-    public void setConnection(Connection Connessione);
+    public void setConnection();
     public ArrayList<Recensione> getAllRecensioni(int CodiceStruttura);
     public int deleteRecensione(int CodiceRecensione);
     public void approvaRecensione(Recensione DaApprovare);

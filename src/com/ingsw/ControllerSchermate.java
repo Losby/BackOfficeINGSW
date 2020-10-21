@@ -54,10 +54,10 @@ public class ControllerSchermate {
     }
     
     public void login(){
-        DAOStruttura = new StrutturaDAOJDBC();
-        DAORecensione = new RecensioneDAOJDBC();
+        DAOStruttura = StrutturaDAOFactory.getDAOStruttura("jdbc");
+        DAORecensione = RecensioneDAOFactory.getDAORecensione("jdbc");
         DAOStruttura.setConnection();
-        DAORecensione.setConnection(((StrutturaDAOJDBC)DAOStruttura).getConnection());
+        DAORecensione.setConnection();
         Login.setVisible(false);
         Menu.setVisible(true);
     }

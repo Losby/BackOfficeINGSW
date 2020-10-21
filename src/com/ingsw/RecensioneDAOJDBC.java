@@ -6,6 +6,7 @@
 package com.ingsw;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,8 +44,31 @@ public class RecensioneDAOJDBC implements RecensioneDAOInterface {
         this.Connessione = Connessione;
     }
     
-    public void setConnection(Connection Connessione) {
-        this.Connessione = Connessione;
+    public void setConnection() {
+        try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String dbName = "consiglia_viaggiDB";
+                String userName = "ingsw_master";
+                String password = "consigliaviaggi20";
+                String hostname = "progetto-ingswdb.cqtyppoiia4t.us-east-2.rds.amazonaws.com";
+                String port = "3306";
+                String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + dbName + "?user=" + userName + "&password=" + password;
+                Connection con = DriverManager.getConnection(jdbcUrl);
+                System.out.println("Remote connection successful.\n");
+                Connessione = con;
+                return;
+            }
+            catch (ClassNotFoundException e) { 
+                // logger.warn(e.toString());
+                System.out.println("Class not found.\n");
+            }
+            catch (java.sql.SQLException ex) { 
+                //logger.warn(e.toString());
+                Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        System.out.println(("Connection is null.\n"));
+        Connessione = null;
+        return;
     }
     
     @Override

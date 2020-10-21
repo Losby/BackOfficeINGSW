@@ -52,6 +52,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         } else if (Prezzo == 3) {
             RangePrezzoText.setText("€€€");
         }
+        pack();
     }
 
     /**
