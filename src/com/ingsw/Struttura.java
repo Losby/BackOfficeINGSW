@@ -57,6 +57,10 @@ public class Struttura {
         LinkImmagine = URL;
     }
     
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+    
     public String getURLFoto() {
         return LinkImmagine;
     }
