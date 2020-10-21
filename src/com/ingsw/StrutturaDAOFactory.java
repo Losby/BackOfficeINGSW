@@ -11,7 +11,7 @@ package com.ingsw;
  */
 public class StrutturaDAOFactory {
     
-    public static StrutturaDAOInterface getDAOStruttura(String TipoLibreria) {
+    public static StrutturaDAO getDAOStruttura(String TipoLibreria) {
         if(TipoLibreria == "jdbc") {
             return new StrutturaDAOJDBC();
         }

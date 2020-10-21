@@ -25,8 +25,8 @@ public class ControllerSchermate {
     private final SchermataInserisciFoto InserisciFoto;
     private final SchermataConfermaInserimentoStruttura ConfermaOperazioneInserimento;
     private final SchermataGestioneRecensioni GestisciRecensioni;
-    private StrutturaDAOInterface DAOStruttura;
-    private RecensioneDAOInterface DAORecensione;
+    private StrutturaDAO DAOStruttura;
+    private RecensioneDAO DAORecensione;
     private static Struttura StrutturaDaInserire;
     private final AWSUploader UploaderAWS;
     

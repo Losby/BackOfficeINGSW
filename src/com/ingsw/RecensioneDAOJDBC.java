@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Marco
  */
-public class RecensioneDAOJDBC implements RecensioneDAOInterface {
+public class RecensioneDAOJDBC implements RecensioneDAO {
 
     private final String SQLSelect = "SELECT `cod_recensione`,\n" +
         "`numero_stelle`,\n" +

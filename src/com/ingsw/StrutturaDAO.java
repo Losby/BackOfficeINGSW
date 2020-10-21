@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Marco
  */
-public interface StrutturaDAOInterface {
+public interface StrutturaDAO {
     
     public void setConnection();
     public ArrayList<Struttura> getAllStrutture();

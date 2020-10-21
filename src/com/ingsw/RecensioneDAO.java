@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Marco
  */
-public interface RecensioneDAOInterface {
+public interface RecensioneDAO {
     
     public void setConnection();
     public ArrayList<Recensione> getAllRecensioni(int CodiceStruttura);

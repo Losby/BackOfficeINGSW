@@ -10,7 +10,7 @@ package com.ingsw;
  * @author Marco
  */
 public class RecensioneDAOFactory {
-    public static RecensioneDAOInterface getDAORecensione(String TipoLibreria) {
+    public static RecensioneDAO getDAORecensione(String TipoLibreria) {
         if(TipoLibreria == "jdbc") {
             return new RecensioneDAOJDBC();
         } else {

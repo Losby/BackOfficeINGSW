@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Marco
  */
-public class StrutturaDAOJDBC implements StrutturaDAOInterface {
+public class StrutturaDAOJDBC implements StrutturaDAO {
 
     private Connection Connessione;
     private final String SQLInsert = "INSERT INTO `struttura` (`nome`, `indirizzo`, `città`, `tipo_struttura`, `range_prezzo`, `link_immagine`, `latitudine`, `longitudine` ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
