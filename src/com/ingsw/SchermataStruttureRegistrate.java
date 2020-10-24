@@ -207,9 +207,7 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
             controller.showModificaStruttura(trovaStruttura(JListStrutture.getSelectedValue()));
         } else if (Operazione == "Recensioni") {
             controller.showGestioneRecensioni(trovaStruttura(JListStrutture.getSelectedValue()));
-        } else {
-            controller.logout();
-        }
+        } 
     }//GEN-LAST:event_JListStruttureMouseClicked
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
