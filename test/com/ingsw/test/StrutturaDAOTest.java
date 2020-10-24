@@ -6,7 +6,6 @@
 package com.ingsw.test;
 
 import com.ingsw.Struttura;
-import com.ingsw.StrutturaDAOInterface;
 import com.ingsw.StrutturaDAOJDBC;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.sql.SQLException;
@@ -16,6 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import com.ingsw.StrutturaDAO;
 
 /**
  *
@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  */
 public class StrutturaDAOTest {
     
-    StrutturaDAOInterface StrutturaDAO;
+    StrutturaDAO DAOStruttura;
     
     public StrutturaDAOTest() {    }
     
@@ -37,7 +37,8 @@ public class StrutturaDAOTest {
     
     @Before
     public void setUp() {
-        StrutturaDAO = new StrutturaDAOJDBC();
+        DAOStruttura = new StrutturaDAOJDBC();
+        DAOStruttura.setConnection();
     }
     
     @After
@@ -45,9 +46,11 @@ public class StrutturaDAOTest {
     }
     
     @Test
-    public void addStrutturaCorrettamenteTest() throws SQLException {
+    public void addStrutturaCorrettamenteTest() {
         /*Questo test verifica la funzionalità di aggiunta di una Struttura al database, prima di eseguirlo assicurarsi che il database
           remoto sia raggiungibile dall'applicativo.
+          Prima di lanciarlo verificare che la struttura campione non sia già presente nel database, altrimenti si verificherà un errore
+          al momento dell'inserimento.
         */
         
         //Verrà creata una struttura da caricare ai fini del test.
@@ -58,14 +61,30 @@ public class StrutturaDAOTest {
         StrutturaDaInserire.setCitta("Napoli");
         StrutturaDaInserire.setCategoria("Bar");
         StrutturaDaInserire.setPrezzo(1);
+        StrutturaDaInserire.setURLFoto("");
         
-        try {
-            int ret = StrutturaDAO.createStruttura(StrutturaDaInserire);
-            assertEquals(1, ret);
-        } catch (SQLException e) {
-            fail("SQL exception: " + e.getMessage() + e.getSQLState() + e.getErrorCode());
-        }
+        int ret = DAOStruttura.createStruttura(StrutturaDaInserire);
+        assertEquals(1, ret);
         
+    }
+    
+    @Test
+    public void addStrutturaSenzaNomeTest() {
+        /*Questo test verifica che qualora si dovesse provare ad aggiungere una struttura senza il nome,
+          il metodo fallirà e ritornerà un valore che indica il fallimento del caricamento.            
+        */
+        //Verrà creata una struttura da caricare ai fini del test.
+        Struttura StrutturaDaInserire;
+        StrutturaDaInserire = new Struttura();
+        StrutturaDaInserire.setIndirizzo("Via Toledo, 10");
+        StrutturaDaInserire.setCitta("Napoli");
+        StrutturaDaInserire.setCategoria("Bar");
+        StrutturaDaInserire.setPrezzo(1);
+        
+        int ret = DAOStruttura.createStruttura(StrutturaDaInserire);
+        
+        //L'inserimento non dovrebbe andare a buon fine, in quanto manca un campo necessario.
+        assertNotEquals(1, ret);
     }
 
     // TODO add test methods here.
