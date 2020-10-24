@@ -7,13 +7,9 @@ package com.ingsw;
 
 
 
-
-import java.net.URLConnection;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
@@ -30,7 +26,7 @@ public class GoogleAPIClient {
     
     public GoogleAPIClient() {}
     
-    final static String API_KEY = "AIzaSyARXK2BDsYuGyAUFSZyER-NKFdzcrH0ZpM";
+    private final static String API_KEY = "AIzaSyARXK2BDsYuGyAUFSZyER-NKFdzcrH0ZpM";
     
     public static String[] getLatLongPositions(String address) throws Exception
     {
