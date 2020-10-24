@@ -152,7 +152,7 @@ public class StrutturaDAOJDBC implements StrutturaDAO {
         } catch (SQLException ex) {
             ret = -1;
         } catch (Exception ex) {   
-            ret = -1;
+            ret = -2;
         }
         return ret;
     }
