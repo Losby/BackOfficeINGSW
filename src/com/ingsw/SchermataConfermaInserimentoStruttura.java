@@ -12,7 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -32,6 +35,15 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         initComponents();
         this.controller = controller;
         this.setLocationRelativeTo(null);
+        //setSize(1920,1080);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
     
     public void riempiDati(String Nome, String Indirizzo, String Citta, String Categoria, int Prezzo, File FotoStruttura) {
@@ -87,6 +99,7 @@ public class SchermataConfermaInserimentoStruttura extends javax.swing.JFrame {
         CittaText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Conferma Inserimento Struttura");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         IndietroButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N

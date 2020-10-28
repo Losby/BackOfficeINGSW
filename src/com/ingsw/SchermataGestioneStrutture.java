@@ -5,6 +5,9 @@
  */
 package com.ingsw;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Marco
@@ -22,6 +25,13 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         initComponents();
         this.controller = controller;
         this.setLocationRelativeTo(null);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
 
     /**
@@ -43,6 +53,7 @@ public class SchermataGestioneStrutture extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Menu di gestione strutture");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         MenuButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N

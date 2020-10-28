@@ -5,7 +5,10 @@
  */
 package com.ingsw;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -30,6 +33,15 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         initComponents();
         this.controller = controller;
         this.setLocationRelativeTo(null);
+        //setSize(1920,1080);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
     
     public void svuotaCampi() {
@@ -69,6 +81,7 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
         CittaField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Inserimento dati struttura");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         IntestazioneLabel.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
@@ -321,6 +334,5 @@ public class SchermataInserimentoStruttura extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

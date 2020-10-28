@@ -11,6 +11,8 @@ import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListModel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -36,6 +38,13 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         PromptRicerca = new TextPrompt("Cerca struttura...", CercaField);
         PromptRicerca.setShowPromptOnce(true);
         PromptRicerca.setShow(FOCUS_LOST);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
 
     public void setOperazione(String Operazione) {
@@ -113,6 +122,7 @@ public class SchermataStruttureRegistrate extends javax.swing.JFrame {
         SearchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Lista strutture registrate");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         BackButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N

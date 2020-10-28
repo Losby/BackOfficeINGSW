@@ -5,6 +5,12 @@
  */
 package com.ingsw;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Marco
@@ -29,6 +35,16 @@ public class SchermataLogin extends javax.swing.JFrame {
         this.controller = controller;  
         this.setLocationRelativeTo(null);
         CredenzialiLabel.setVisible(false);
+        //setSize(1920,1080);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setVisible(true);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            } 
     }
 
     /**
@@ -54,7 +70,7 @@ public class SchermataLogin extends javax.swing.JFrame {
         CredenzialiLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("CV19 Back Office - Login");
+        setTitle("Urban Trip Back Office - Login");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         IDLabel.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -110,7 +126,7 @@ public class SchermataLogin extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.2;
         getContentPane().add(PasswordField, gridBagConstraints);
 
-        LogoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ingsw/immagini/logo.png"))); // NOI18N
+        LogoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ingsw/immagini/logourban.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;

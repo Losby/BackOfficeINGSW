@@ -6,6 +6,8 @@
 package com.ingsw;
 
 import java.io.File;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -36,6 +38,13 @@ public class SchermataSelezionaFoto extends javax.swing.JFrame {
         jFileChooser1.setAcceptAllFileFilterUsed(false);
         jFileChooser1.addChoosableFileFilter(filter);
         jFileChooser1.setFileFilter(filter);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
     
     public SchermataSelezionaFoto(SchermataInserisciFoto CaricaFoto) {
@@ -47,6 +56,13 @@ public class SchermataSelezionaFoto extends javax.swing.JFrame {
         jFileChooser1.setAcceptAllFileFilterUsed(false);
         jFileChooser1.addChoosableFileFilter(filter);
         jFileChooser1.setFileFilter(filter);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
     
     /**

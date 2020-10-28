@@ -12,7 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -35,6 +38,15 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         this.controller = controller;
         this.setLocationRelativeTo(null);
         FotoChooser = new SchermataSelezionaFoto(this);
+        //setSize(1920,1080);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
     public void setFoto(File Foto) {
         FotoCaricata = Foto;
@@ -79,6 +91,7 @@ public class SchermataInserisciFoto extends javax.swing.JFrame {
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Inserimento foto struttura");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         IntestazioneLabelFoto.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N

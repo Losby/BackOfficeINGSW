@@ -14,7 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -27,6 +30,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
     private int CodiceStruttura;
     private SchermataSelezionaFoto ModificaFoto;
     private File FotoNuova;
+    private String URLFoto;
     /**
      * Creates new form SchermataModificaStruttura
      */
@@ -47,6 +51,15 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         ModificaFotoButton.setVisible(false);
         Modifica = false;
         ModificaFoto = new SchermataSelezionaFoto(this);
+        //setSize(1920,1080);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
     
     private void inizioModifica() {
@@ -69,6 +82,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         ModificaButton.setVisible(true);
         ModificaFotoButton.setVisible(false);
         Modifica = false;
+        FotoNuova = null;
     }
     
     public void modificaFoto(File FotoNuova) {
@@ -86,8 +100,9 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         PrezzoBox.setSelectedIndex(DaModificare.getPrezzo()-1);
         CittaField.setText(DaModificare.getCitta());
         CodiceStruttura = DaModificare.getIDStruttura();
+        URLFoto = DaModificare.getURLFoto();
         try {
-            FotoLabel.setIcon(new ImageIcon(ImageIO.read(new URL(DaModificare.getURLFoto())).getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
+            FotoLabel.setIcon(new ImageIcon(ImageIO.read(new URL(URLFoto)).getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
         } catch (MalformedURLException ex) {
             Logger.getLogger(SchermataModificaStruttura.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -124,6 +139,7 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         ModificaFotoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Modifica struttura");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         BackButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -368,6 +384,8 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         PostModifica.setPrezzo(PrezzoBox.getSelectedIndex()+1);
         if(FotoNuova != null) {
             PostModifica.setURLFoto(controller.caricaFoto(this.FotoNuova));
+        } else {
+            PostModifica.setURLFoto(URLFoto);
         }
         
         controller.modificaStruttura(CodiceStruttura, PostModifica);

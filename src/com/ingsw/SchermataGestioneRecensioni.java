@@ -14,10 +14,13 @@ import java.util.ArrayList;
 import javax.swing.Box.Filler;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -40,6 +43,15 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
         this.controller = controller;
         this.setLocationRelativeTo(null);
         NienteRecensioniLabel.setVisible(false);
+        //setSize(1920,1080);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
     
     public void riempiPanel(ArrayList<Recensione> ListaRecensioni) {  
@@ -186,6 +198,7 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
         NienteRecensioniLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Recensioni");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         IntestazioneLabel.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
