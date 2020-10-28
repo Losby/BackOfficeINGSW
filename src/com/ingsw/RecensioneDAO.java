@@ -5,7 +5,6 @@
  */
 package com.ingsw;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 
 /**

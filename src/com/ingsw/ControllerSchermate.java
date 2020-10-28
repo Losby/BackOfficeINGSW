@@ -6,10 +6,7 @@
 package com.ingsw;
 
 import java.io.File;
-import java.sql.Connection;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
