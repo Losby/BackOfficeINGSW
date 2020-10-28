@@ -27,7 +27,7 @@ public class StrutturaDAOJDBC implements StrutturaDAO {
         "SET\n" +
         "`indirizzo` = ?,\n" +
         "`città` = ?,\n" +
-        "`range_prezzo` = ?,\n" + "`link_immagine` = ?\n" +
+        "`range_prezzo` = ?,\n" + "`link_immagine` = ?,\n`latitudine` = ?,\n`longitudine` = ?\n" +
         "WHERE `cod_struttura` = ?;";
     private final String SQLDelete = "DELETE FROM `struttura` WHERE `cod_struttura` = ?";
     
@@ -122,10 +122,17 @@ public class StrutturaDAOJDBC implements StrutturaDAO {
             prepStat.setString(2, PostModifica.getCitta());
             prepStat.setInt(3, PostModifica.getPrezzo());
             prepStat.setString(4, PostModifica.getURLFoto());
-            prepStat.setInt(5, ChiavePrimaria);
+            prepStat.setInt(7, ChiavePrimaria);
+            
+            String[] Coordinate = Geocoder.getLatLongPositions(""+PostModifica.getNomeStruttura()+", "+PostModifica.getIndirizzo()+", "+PostModifica.getCitta()+"");
+            
+            prepStat.setString(5, Coordinate[0]);
+            prepStat.setString(6, Coordinate[1]);
             
             ret = prepStat.executeUpdate();
         } catch (SQLException ex) {
+            Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ret;
