@@ -5,6 +5,11 @@
  */
 package com.ingsw;
 
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+
 /**
  *
  * @author Marco
@@ -22,6 +27,14 @@ public class SchermataMenu extends javax.swing.JFrame {
         initComponents();
         this.controller = controller;
         this.setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        try {
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
     }
 
     /**
@@ -42,6 +55,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 3), new java.awt.Dimension(0, 3), new java.awt.Dimension(32767, 3));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UT Back Office - Main Menu");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         LogoutButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -59,9 +73,12 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.5;
         getContentPane().add(LogoutButton, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Corbel", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ingsw/immagini/logourban1.png"))); // NOI18N
         jLabel1.setText("Benvenuto! Cosa vuoi fare oggi?");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -70,7 +87,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        StruttureButton.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        StruttureButton.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         StruttureButton.setText("Gestione delle Strutture");
         StruttureButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +105,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         getContentPane().add(StruttureButton, gridBagConstraints);
 
-        RecensioniButton.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
+        RecensioniButton.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         RecensioniButton.setText("Gestione delle Recensioni");
         RecensioniButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
