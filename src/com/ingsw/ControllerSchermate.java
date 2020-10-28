@@ -50,7 +50,8 @@ public class ControllerSchermate {
     }
     
     private void run() {
-        Login.setVisible(true);
+        Menu.setVisible(true);
+        login();
     }
     
     public void login(){
@@ -58,9 +59,7 @@ public class ControllerSchermate {
         DAORecensione = RecensioneDAOFactory.getDAORecensione("jdbc");
         DAOStruttura.setConnection();
         DAORecensione.setConnection();
-        Login.setVisible(false);
-        Menu.setVisible(true);
-    }
+        }
     
     public void showMenu() {
         Menu.setVisible(true);
@@ -87,11 +86,7 @@ public class ControllerSchermate {
     public void showGestioneStrutture() {
         GestioneStrutture.setVisible(true);
     }
-    
-    public void logout() {
-        Login.setVisible(true);
-    }
-    
+        
     public void showGestioneRecensioni(Struttura StrutturaDaGestire) {
         GestisciRecensioni.setStruttura(StrutturaDaGestire);
         GestisciRecensioni.riempiPanel(DAORecensione.getAllRecensioni(StrutturaDaGestire.getIDStruttura()));

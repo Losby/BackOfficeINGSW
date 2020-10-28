@@ -47,31 +47,16 @@ public class SchermataMenu extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        LogoutButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         StruttureButton = new javax.swing.JButton();
         RecensioniButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 3), new java.awt.Dimension(0, 3), new java.awt.Dimension(32767, 3));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 3), new java.awt.Dimension(0, 3), new java.awt.Dimension(32767, 3));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UT Back Office - Main Menu");
         getContentPane().setLayout(new java.awt.GridBagLayout());
-
-        LogoutButton.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        LogoutButton.setText("Logout");
-        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
-        gridBagConstraints.weightx = 0.5;
-        gridBagConstraints.weighty = 0.5;
-        getContentPane().add(LogoutButton, gridBagConstraints);
 
         jLabel1.setFont(new java.awt.Font("Corbel", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -80,7 +65,7 @@ public class SchermataMenu extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
@@ -95,7 +80,7 @@ public class SchermataMenu extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
@@ -113,7 +98,7 @@ public class SchermataMenu extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 15;
@@ -123,19 +108,25 @@ public class SchermataMenu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         getContentPane().add(RecensioniButton, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.weightx = 0.2;
         gridBagConstraints.weighty = 0.5;
         getContentPane().add(filler1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 4;
-        gridBagConstraints.weightx = 0.8;
+        gridBagConstraints.weightx = 0.2;
         gridBagConstraints.weighty = 0.5;
         getContentPane().add(filler2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.weighty = 0.1;
+        getContentPane().add(filler3, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,11 +136,6 @@ public class SchermataMenu extends javax.swing.JFrame {
         controller.showGestioneStrutture();
     }//GEN-LAST:event_StruttureButtonActionPerformed
 
-    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
-        this.setVisible(false);
-        controller.logout();
-    }//GEN-LAST:event_LogoutButtonActionPerformed
-
     private void RecensioniButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecensioniButtonActionPerformed
         this.setVisible(false);
         controller.showStruttureRegistrate("Recensioni");
@@ -157,11 +143,11 @@ public class SchermataMenu extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LogoutButton;
     private javax.swing.JButton RecensioniButton;
     private javax.swing.JButton StruttureButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

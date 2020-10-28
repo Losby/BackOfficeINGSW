@@ -37,7 +37,6 @@ public class SchermataLogin extends javax.swing.JFrame {
         CredenzialiLabel.setVisible(false);
         //setSize(1920,1080);
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        setVisible(true);
         try {
                 UIManager.setLookAndFeel(UIManager
                         .getSystemLookAndFeelClassName());
