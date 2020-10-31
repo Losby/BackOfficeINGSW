@@ -47,8 +47,8 @@ public class ControllerSchermate {
     }
     
     private void run() {
-        Menu.setVisible(true);
         login();
+        Menu.setVisible(true);
     }
     
     public void login(){
