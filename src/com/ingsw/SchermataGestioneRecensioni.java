@@ -59,6 +59,7 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
             
             if(!(ListaRecensioni.isEmpty())) {
                 NienteRecensioniLabel.setVisible(false);
+                svuotaPanel();
                 jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.PAGE_AXIS));
                 for (Recensione RecensioneTemp : ListaRecensioni) {
                     JPanel temp = new JPanel();
