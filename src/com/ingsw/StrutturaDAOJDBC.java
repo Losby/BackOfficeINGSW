@@ -124,7 +124,7 @@ public class StrutturaDAOJDBC implements StrutturaDAO {
             prepStat.setString(4, PostModifica.getURLFoto());
             prepStat.setInt(7, ChiavePrimaria);
             
-            String[] Coordinate = Geocoder.getLatLongPositions(""+PostModifica.getNomeStruttura()+", "+PostModifica.getIndirizzo()+", "+PostModifica.getCitta()+"");
+            String[] Coordinate = Geocoder.getLatLongPositions(""+PostModifica.getIndirizzo()+", "+PostModifica.getCitta()+"");
             
             prepStat.setString(5, Coordinate[0]);
             prepStat.setString(6, Coordinate[1]);
