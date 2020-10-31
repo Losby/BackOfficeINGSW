@@ -88,6 +88,8 @@ public class SchermataGestioneRecensioni extends javax.swing.JFrame {
             }
         }
        pack();
+       this.setLocationRelativeTo(null);
+       setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
     private void svuotaPanel() {
