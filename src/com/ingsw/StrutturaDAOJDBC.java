@@ -112,29 +112,34 @@ public class StrutturaDAOJDBC implements StrutturaDAO {
         
         return Lista;
     }
-
-    @Override
-    public int updateStruttura(int ChiavePrimaria, Struttura PostModifica) {
-        int ret = -1;
+    
+    private String[] getCoordinate(String Indirizzo) {
         try {
-            PreparedStatement prepStat = Connessione.prepareStatement(SQLUpdate);
-            prepStat.setString(1, PostModifica.getIndirizzo());
-            prepStat.setString(2, PostModifica.getCitta());
-            prepStat.setInt(3, PostModifica.getPrezzo());
-            prepStat.setString(4, PostModifica.getURLFoto());
-            prepStat.setInt(7, ChiavePrimaria);
-            
-            String[] Coordinate = Geocoder.getLatLongPositions(""+PostModifica.getIndirizzo()+", "+PostModifica.getCitta()+"");
-            
-            prepStat.setString(5, Coordinate[0]);
-            prepStat.setString(6, Coordinate[1]);
-            
-            ret = prepStat.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            return Geocoder.getLatLongPositions(Indirizzo);
         } catch (Exception ex) {
             Logger.getLogger(StrutturaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
+    }
+
+    @Override
+    public int updateStruttura(int ChiavePrimaria, Struttura PostModifica) throws SQLException {
+        int ret = -1;
+       
+        PreparedStatement prepStat = Connessione.prepareStatement(SQLUpdate);
+        prepStat.setString(1, PostModifica.getIndirizzo());
+        prepStat.setString(2, PostModifica.getCitta());
+        prepStat.setInt(3, PostModifica.getPrezzo());
+        prepStat.setString(4, PostModifica.getURLFoto());
+        prepStat.setInt(7, ChiavePrimaria);
+         
+        String[] Coordinate = getCoordinate(""+PostModifica.getIndirizzo()+", "+PostModifica.getCitta()+"");
+           
+        prepStat.setString(5, Coordinate[0]);
+        prepStat.setString(6, Coordinate[1]);
+           
+        ret = prepStat.executeUpdate();
+        
         return ret;
     }
 

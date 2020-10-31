@@ -6,6 +6,7 @@
 package com.ingsw;
 
 import java.io.File;
+import java.sql.SQLException;
 
 
 /**
@@ -72,7 +73,7 @@ public class ControllerSchermate {
         ModificaStruttureRegistrate.setVisible(true);
     }
     
-    public void modificaStruttura(int ChiavePrimaria, Struttura PostModifica) {
+    public void modificaStruttura(int ChiavePrimaria, Struttura PostModifica) throws SQLException {
         DAOStruttura.updateStruttura(ChiavePrimaria, PostModifica);
     }
     

@@ -5,6 +5,7 @@
  */
 package com.ingsw;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ public interface StrutturaDAO {
     
     public void setConnection();
     public ArrayList<Struttura> getAllStrutture();
-    public int updateStruttura(int ChiavePrimaria, Struttura PostModifica);
+    public int updateStruttura(int ChiavePrimaria, Struttura PostModifica) throws SQLException;
     public int createStruttura(Struttura StrutturaDaCaricare);
     public int deleteStruttura(int ChiavePrimaria);
     

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -387,8 +388,15 @@ public class SchermataModificaStruttura extends javax.swing.JFrame {
         } else {
             PostModifica.setURLFoto(URLFoto);
         }
-        
-        controller.modificaStruttura(CodiceStruttura, PostModifica);
+        try{
+            controller.modificaStruttura(CodiceStruttura, PostModifica);
+        } catch (SQLException e) {
+            if(JOptionPane.showConfirmDialog(this, "C'è stato un errore durante la modifica della struttura, riprova più tardi.", "Errore durante la modifica.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE) == JOptionPane.OK_OPTION) {
+                fineModifica();
+                this.setVisible(false);
+                controller.showStruttureRegistrate("Strutture");        
+            }
+        }
         fineModifica();
     }//GEN-LAST:event_ConfermaModificaButtonActionPerformed
 
